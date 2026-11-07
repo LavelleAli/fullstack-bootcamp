@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+pg/
+verify/tmp/
+*.png
+*.log
+.env*
+!.env.example
+.pytest_cache/

@@ -1,0 +1,745 @@
+### sql-tables example
+CREATE TABLE
+INSERT 0 2
+ id |  title  | in_stock 
+----+---------+----------
+  1 | Dune    | t
+  2 | Kindred | t
+(2 rows)
+
+
+
+### sql-tables practice
+CREATE TABLE
+INSERT 0 2
+ name |      email      
+------+-----------------
+ Ana  | ana@example.com
+ Bo   | bo@example.com
+(2 rows)
+
+
+
+### sql-select example
+        title         | price 
+----------------------+-------
+ Kindred              | 12.50
+ Parable of the Sower | 11.25
+(2 rows)
+
+ total | avg_pages 
+-------+-----------
+     2 |       305
+(1 row)
+
+        title         
+----------------------
+ Parable of the Sower
+(1 row)
+
+
+
+### sql-select practice
+     author     | books 
+----------------+-------
+ Octavia Butler |     2
+ Frank Herbert  |     1
+(2 rows)
+
+
+
+### sql-update example
+ id |  title  
+----+---------
+  2 | Kindred
+  3 | Beloved
+(2 rows)
+
+  title  | price 
+---------+-------
+ Kindred | 11.25
+ Beloved | 12.60
+(2 rows)
+
+UPDATE 2
+ id 
+----
+  1
+(1 row)
+
+DELETE 1
+ count 
+-------
+     2
+(1 row)
+
+
+
+### sql-update practice
+UPDATE 1
+ title 
+-------
+ Dune
+(1 row)
+
+
+
+### i-sql-keys example
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+INSERT 0 2
+DELETE 1
+  title  
+---------
+ Kindred
+(1 row)
+
+
+
+### i-sql-keys practice
+CREATE TABLE
+
+
+### i-sql-joins example
+  title  |      name      
+---------+----------------
+ Dawn    | Octavia Butler
+ Dune    | Frank Herbert
+ Kindred | Octavia Butler
+(3 rows)
+
+      name      |  title  
+----------------+---------
+ Frank Herbert  | Dune
+ New Author     | 
+ Octavia Butler | Dawn
+ Octavia Butler | Kindred
+(4 rows)
+
+
+
+### i-sql-joins practice
+ name 
+------
+ B
+(1 row)
+
+
+
+### i-sql-group example
+ customer | orders | spent 
+----------+--------+-------
+ cy       |      3 | 65.00
+ ana      |      2 | 55.00
+(2 rows)
+
+
+
+### i-sql-group practice
+ customer | avg_order 
+----------+-----------
+ ana      |     27.50
+ cy       |     30.00
+(2 rows)
+
+
+
+### a-sql-indexes example
+CREATE TABLE
+INSERT 0 50000
+ANALYZE
+        QUERY PLAN        
+--------------------------
+ Seq Scan on events
+   Filter: (user_id = 42)
+(2 rows)
+
+CREATE INDEX
+                  QUERY PLAN                   
+-----------------------------------------------
+ Bitmap Heap Scan on events
+   Recheck Cond: (user_id = 42)
+   ->  Bitmap Index Scan on events_user_id_idx
+         Index Cond: (user_id = 42)
+(4 rows)
+
+
+
+### a-sql-indexes practice
+CREATE INDEX
+
+
+### a-sql-transactions example
+CREATE TABLE
+INSERT 0 2
+BEGIN
+UPDATE 1
+UPDATE 1
+COMMIT
+BEGIN
+UPDATE 1
+ balance 
+---------
+   70.00
+(1 row)
+
+ROLLBACK
+ owner | balance 
+-------+---------
+ ana   |   70.00
+ bo    |   50.00
+(2 rows)
+
+
+
+### a-sql-design example
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 2
+INSERT 0 2
+INSERT 0 3
+  name   | books 
+---------+-------
+ sci-fi  |     2
+ classic |     1
+(2 rows)
+
+
+
+### a-sql-design practice
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+
+
+### SERVER ex-server example
+GET / -> 200 <h1>Hello from Express</h1>
+GET /api/status -> 200 {"ok":true,"time":"2026-11-05T21:55:06.671Z"}
+GET /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/ping -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /healthz -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/login -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+PATCH /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+LOG: Server running on http://localhost:3000
+
+### SERVER ex-params example
+GET / -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/status -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books -> 200 [{"id":1,"title":"Dune","author":"Herbert"}]
+GET /api/books/1 -> 200 {"id":1,"title":"Dune","author":"Herbert"}
+GET /api/books/99 -> 404 {"error":"Book not found"}
+POST /api/books -> 201 {"id":2,"title":"Kindred","author":"Butler"}
+POST /api/books -> 400 {"error":"title and author are required"}
+GET /api/ping -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /healthz -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/login -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+PATCH /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+LOG: 
+
+### SERVER ex-middleware example
+GET / -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/status -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/ping -> 200 {"pong":true,"tookMs":0}
+GET /healthz -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/login -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+PATCH /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+LOG: [0mGET / [33m404[0m 1.793 ms - 139[0m
+[0mGET /api/status [33m404[0m 0.406 ms - 149[0m
+[0mGET /api/books [33m404[0m 0.386 ms - 148[0m
+[0mGET /api/books/1 [33m404[0m 0.263 ms - 150[0m
+[0mGET /api/books/99 [33m404[0m 0.230 ms - 151[0m
+[0mPOST /api/books [33m404[0m 15.716 ms - 149[0m
+[0mPOST /api/books [33m404[0m 0.372 ms - 149[0m
+[0mGET /api/ping [32m200[0m 1.388 ms - 24[0m
+[0mGET /healthz [33m404[0m 0.381 ms - 146[0m
+[0mPOST /api/login [33m404[0m 0.520 ms - 149[0m
+[0mGET /api/notes [33m404[0m 0.193 ms - 148[0m
+[0mPOST /api/notes [33m404[0m 0.294 ms - 149[0m
+[0mPATCH /api/notes/2 [33m404[0m 0.267 ms - 152[0m
+[0mGET /api/notes/2 [33m404[0m 0.241 ms - 150[0m
+[0mDELETE /api/notes/1 [33m404[0m 0.263 ms - 153[0m
+[0mDELETE /api/notes/99 [33m404[0m 0.172 ms - 154[0m
+
+### SERVER i-ex-router example
+GET / -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/status -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/ping -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /healthz -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/login -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes -> 200 [{"id":1,"title":"Buy flour","done":false}]
+POST /api/notes -> 201 {"id":2,"title":"Proof dough","done":false}
+PATCH /api/notes/2 -> 200 {"id":2,"title":"Proof dough","done":true}
+GET /api/notes/2 -> 200 {"id":2,"title":"Proof dough","done":true}
+DELETE /api/notes/1 -> 204 
+DELETE /api/notes/99 -> 404 {"error":"Note not found"}
+LOG: 
+
+### SERVER i-ex-errors example
+GET / -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/status -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/1 -> 404 {"error":"Book not found"}
+GET /api/books/99 -> 404 {"error":"Book not found"}
+POST /api/books -> 201 {"id":1,"title":"Kindred","author":"Butler"}
+POST /api/books -> 400 {"error":"Missing: title, author"}
+GET /api/ping -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /healthz -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/login -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+PATCH /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+LOG: 
+
+### i-ex-db practice
+CREATE TABLE
+
+
+### SERVER a-ex-security example
+GET / -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/status -> 200 {"ok":true}
+GET /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/ping -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /healthz -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/login -> 401 {"error":"Email or password is incorrect"}
+GET /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+PATCH /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+LOG: 
+
+### SERVER a-ex-production example
+GET / -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/status -> 200 {"ok":true}
+GET /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/books/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/books -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/ping -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /healthz -> 200 {"status":"ok","uptime":1}
+POST /api/login -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+POST /api/notes -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+PATCH /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+GET /api/notes/2 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/1 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+DELETE /api/notes/99 -> 404 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</tit
+LOG: {"level":"info","id":"fe1fa0a8-7df5-4edb-96b1-88a0c85d0ec3","method":"GET","path":"/","status":404,"ms":4}
+{"level":"info","id":"5e036fb1-18ea-4e51-83e7-3900d9edc8bb","method":"GET","path":"/api/status","status":200,"ms":2}
+{"level":"info","id":"69cfcea8-73b4-41d0-ad9b-525982b55ece","method":"GET","path":"/api/books","status":404,"ms":1}
+{"level":"info","id":"66a3f828-5370-4e63-bcf2-2ae1ebae3f66","method":"GET","path":"/api/books/1","status":404,"ms":0}
+{"level":"info","id":"6cba5604-649b-45b8-ad3d-c555de7332cc","method":"GET","path":"/api/books/99","status":404,"ms":1}
+{"level":"info","id":"e9ed5e1d-2a25-44d7-8a1b-0ab11a05c102","method":"POST","path":"/api/books","status":404,"ms":1}
+{"level":"info","id":"d9489a5b-5d27-47b0-a794-1d31e6e52621","method":"POST","path":"/api/books","status":404,"ms":1}
+{"level":"info","id":"8fe3e16e-92d8-4a5b-946f-436341ecc521","method":"GET","path":"/api/ping","status":404,"ms":0}
+{"level":"info","id":"574978a3-5c61-44c6-b039-1bb35f6a9309","method":"GET","path":"/healthz","status":200,"ms":1}
+{"level":"info","id":"1b285fc2-a66e-40a9-8b63-d20f4497c2ed","method":"POST","path":"/api/login","status":404,"ms":1}
+{"level":"info","id":"3b27590d-70de-45fd-88be-d5bd46fa1fd6","method":"GET","path":"/api/notes","status":404,"ms":1}
+{"level":"info","id":"9a41f4a6-9ce9-487e-a90a-5542c63f3e64","method":"POST","path":"/api/notes","status":404,"ms":1}
+{"level":"info","id":"d1c40c65-9376-4093-8ca7-d79e6ee5a384","method":"PATCH","path":"/api/notes/2","status":404,"ms":0}
+{"level":"info","id":"548898fd-2f60-4e07-a0f5-554bfe29f351","method":"GET","path":"/api/notes/2","status":404,"ms":0}
+{"level":"info","id":"1d16a456-96d6-492a-9dff-ae69edee1f82","method":"DELETE","path":"/api/notes/1","status":404,"ms":1}
+{"level":"info","id":"6a534109-31f3-4b8f-b838-a535da2bdb15","method":"DELETE","path":"/api/notes/99","status":404,"ms":1}
+{"level":"info","msg":"shutting down","signal":"SIGTERM"}
